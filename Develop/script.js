@@ -11,36 +11,40 @@ function randomUpper() {
  value = Math.floor(Math.random()* 26)
  upper = upperArray[value];
   console.log(upper)
+  return upper
 }
-randomUpper();
+// randomUpper();
 
 
 var randomLower = function() {
   value = Math.floor(Math.random() * 26);
   lower = lowerArray[value]
-  console.log(lower)
+   console.log(lower)
+   return lower
 };
-randomLower();
+// randomLower();
 
 var randomNum = function() {
   value = Math.floor(Math.random() * 10);
-  num = numArray[value]
-  console.log(num)
+  var num = numArray[value]
+   console.log(num)
+   return num
 };
-randomNum();
+// randomNum();
 
 var randomSym = function() {
   value = Math.floor(Math.random() * symbol.length);
-  sym = symbol[value]
-  console.log(sym)
+  var sym = symbol[value]
+   console.log(sym)
+   return sym
 };
-randomSym();
+// randomSym();
 var passwordFunctions = ["randomLower()",]
 
   //prompt uppercase
 var uppercase = function() {
   var upper = window.prompt("Do you want to include uppercase charactors? Yes or No");
-    console.log(upper);
+    // console.log(upper);
   if (upper === "" || upper === null) {
     window.alert("Please provide a valid answer. Yes or No")
     uppercase();
@@ -54,7 +58,7 @@ var uppercase = function() {
 //prompt for numeric values  
 var numbers = function() {
   var num = window.prompt("Do you want to include numbers? Yes or No");
-    console.log(num);
+    //console.log(num);
   if (num === "" || num === null) {
     window.alert("Please provide a valid answer. Yes or No")
     numbers();
@@ -65,10 +69,10 @@ var numbers = function() {
   };
 };
 //prompt for spectial characters
-var sym = function() {
+var sym1 = function() {
   var sym = window.prompt("Do you want to include symbols? Yes or No");
   
-  console.log(sym);
+  //console.log(sym);
   if (sym === "" || sym === null) {
     window.alert("Please provide a valid answer. Yes or No")
     
@@ -78,50 +82,65 @@ var sym = function() {
     passwordFunctions.push("randomSym()");
     };
 } 
-console.warn(passwordFunctions[2]);
 //Write password to the #password input
 function writePassword() {
   
-  // var password = generatePassword();
-  // var passwordText = document.querySelector("#password");
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+ 
 
+  passwordText.value = password
+
+};
+  function generatePassword() {
+    var passwordString = "";
 // prompt length of password
   var passwordLength = "";
 
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Enter password length between 8 and 128");
   };
-      
+     
   uppercase();
 
   numbers();
  
-  sym();
+  sym1();
 
-
-  function generatePassword() {
+  console.log(passwordFunctions);
     for (var i = 0; i < passwordLength; i++) {
      var value = Math.floor(Math.random() * passwordFunctions.length);
-     console.log(value);
+     //console.log(value);
      result = passwordFunctions[value];
-     console.warn(result);
+     //console.log(result);
      if (result == "randomNum()") {
-       randomNum();
+      var num = randomNum();
+       passwordString = passwordString.concat(num);
+       console.log(num);
      }
      else if (result === "randomSym()") {
-       randomSym();
+      var sym = randomSym();
+      passwordString = passwordString.concat(sym);
+      console.log(sym)
      }
      else if (result === "randomLower()") {
-       randomLower();
+      var low = randomLower();
+      passwordString = passwordString.concat(low);
+      console.log(low)
      }
      else {
-       randomUpper()
-     };
-  
-
-  }
-  generatePassword();
+      //  randomUpper()
+      var upper = randomUpper();
+      passwordString = passwordString.concat(upper)
+      console.log(upper)
+     }
+  console.log(passwordString);
+ 
+  } return passwordString
 }
+  
+ 
+
 
 
 
