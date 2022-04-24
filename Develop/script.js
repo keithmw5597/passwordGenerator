@@ -39,9 +39,24 @@ var randomSym = function() {
    return sym
 };
 // randomSym();
-var passwordFunctions = ["randomLower()",]
+var passwordFunctions = []
+
+// prompt lowercase
+var lowercase = function() {
+  var lower = window.prompt("Do you want to include lowercase charactors? Yes or No");
+    // console.log(upper);
+  if (lower === "" || lower === null) {
+    window.alert("Please provide a valid answer. Yes or No")
+    lowercase();
+    };
+  lower = lower.toLowerCase();
+  if (lower === "yes") {
+    passwordFunctions.push("randomLower()");
+    };
+  };
 
   //prompt uppercase
+
 var uppercase = function() {
   var upper = window.prompt("Do you want to include uppercase charactors? Yes or No");
     // console.log(upper);
@@ -100,6 +115,7 @@ function writePassword() {
   while (passwordLength < 8 || passwordLength > 128) {
     passwordLength = prompt("Enter password length between 8 and 128");
   };
+  lowercase();
      
   uppercase();
 
