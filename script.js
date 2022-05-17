@@ -159,7 +159,11 @@ function writePassword() {
 
 
 
+//prompt for numeric and or spectial characters
 
+// prompt length of password
+
+//confirm
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
